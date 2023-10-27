@@ -295,8 +295,8 @@ public class library_management
 			switch(ch1) 
 			{
 			case 1:		//For Librarian login
-				String pwd1="abc123";
-				String id1="dsa@1";
+				String pwd1="0";
+				String id1="D";
 				
 				System.out.println("\nEnter UserId:" );
 				String id2 = input.next();
@@ -412,8 +412,8 @@ public class library_management
 										int a=hashmapping.get(b2);
 										System.out.println("\nEnter quantity of book to add more:");
 										int q = input.nextInt();
+										arr[a][1]+=q;
 										arr[a][0]+=q;
-										
 									}
 							break;
 							
@@ -501,7 +501,7 @@ public class library_management
 									arr[a][1]--;	 								 
 									Cday=cal.getTime();
 									System.out.println("Currunt Date Time : " + formatter.format(cal.getTime()));
-									cal.add(Calendar.SECOND, 5);
+									cal.add(Calendar.SECOND, 30);
 									Rday1 = cal.getTime();
 									System.out.println("Due Date Time: " + formatter.format(Rday1));
 									array[index].book_no++;
@@ -562,9 +562,9 @@ public class library_management
 								{
 					                System.out.println("Book is overdue.");
 					                long diff=Rday2.getTime()-Rday1.getTime();
-					                int noofdays=(int)(diff/(2000/**24*60*60*/));
+					                int noofdays=(int)(diff/(2000/*24*60*60*/));
 					                System.out.println("Due Date Time: " + formatter.format(Rday2));
-					                System.out.println("book is delayed by " + noofdays + "seconds." + diff);
+					                System.out.println("book is delayed by " + noofdays + "seconds."  /* + diff */);
 					                double charge =noofdays*5;
 					                System.out.println("Your charge is: " + charge + "Rs." );
 					            }
