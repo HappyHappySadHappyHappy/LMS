@@ -245,11 +245,11 @@ public class library_management
 		HashMap<String, Integer> hashmapping = new HashMap<>();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
 		Calendar cal = Calendar.getInstance();
-		Student[] array =new Student[3];
+		Student[] array =new Student[4];
 		//Add student Details
-		array[0]=new Student("Rajvi",1741078,"B.Tech-ICT");
-		array[1]=new Student("Krushna",1741086,"B.Tech-ICT");
-		array[2]=new Student("Kalagee",1741052,"B.Tech-ICT");
+		array[0]=new Student("Atharva",12211608,"B.Tech-VIT");
+		array[1]=new Student("Yuvraj",12211356,"B.Tech-VIT");
+		array[2]=new Student("harshit",12211408,"B.Tech-VIT");
 		int [][] arr=new int[100][2];
 		
 		//Create file to store data of students.
@@ -321,7 +321,8 @@ public class library_management
 						System.out.println("4. Print Books Details. ");
 						System.out.println("5. Print Books in-order. ");
 						System.out.println("6. Print tree ");
-						System.out.println("7. Exit");
+						System.out.println("7. Search book");
+						System.out.println("8. Exit");
 						
 						System.out.println("\n....................................." );
 						
@@ -415,7 +416,12 @@ public class library_management
 										arr[a][1]+=q;
 										arr[a][0]+=q;
 									}
+									else{
+										System.out.println();
+										System.out.println("book not found!!");
+									}
 							break;
+
 							
 							case 4:		//Print Books Details
 								
@@ -439,8 +445,27 @@ public class library_management
 							case 6://To print binary search tree
 								tree.printTree();
 							break;
-							
+
 							case 7:
+								System.out.println("\nEnter name of book:");
+								String b3 = input.next();
+
+								boolean y=tree.containsNode(b3);
+								if(y==true)
+								{
+									int a=hashmapping.get(b3);
+									int m = arr[a][1];
+									if(m >= 0){
+										System.out.println("Total avilable books are: "+m);
+									}
+								}
+								else{
+									System.out.println();
+									System.out.println("book not found!!");
+								}
+								break;
+							
+							case 8:
 								e2=true;
 								break;
 								
