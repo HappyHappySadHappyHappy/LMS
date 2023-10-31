@@ -136,30 +136,32 @@ public class library_management
 		: containsNodeRecursive(current.right, key);
 	}
 	
-	//print tree in 2D
+//	print tree in 2D
 
-//	void printTree()
-//    {
-//        root = printTreeRec(root, 0);
-//    }
-//
-//	Node printTreeRec(Node t , int space)
-//    {
-//        if(t == null)
-//            return root;
-//
-//        space += 5;
-//
-//        printTreeRec(t.right ,space);
-//
-//        System.out.println();
-//
-//        for(int i = 5 ; i < space ; i++)
-//            System.out.print( " ");
-//        System.out.print("[" +t.key+ "]");
-//
-//        return printTreeRec(t.left ,space);
-//    }
+	void printTree()
+    {
+        root = printTreeRec(root, 0);
+    }
+
+	Node printTreeRec(Node t , int space)
+    {
+        if(t == null)
+            return root;
+
+        space += 5;
+
+        printTreeRec(t.right ,space);
+
+        System.out.println();
+
+        for(int i = 5 ; i < space ; i++) {
+			System.out.print(" ");
+			System.out.print(" ");
+		}
+        System.out.print("[" +t.key+ "]");
+
+        return printTreeRec(t.left ,space);
+    }
 
 
 	
@@ -251,6 +253,15 @@ public class library_management
 		FileWriter fr3 = new FileWriter("append.txt", true);
 		BufferedWriter br3 = new BufferedWriter(fr3);
 
+		FileWriter fr4 = new FileWriter("x.txt", true);
+		BufferedWriter br4= new BufferedWriter(fr4);
+
+		FileWriter fr5 = new FileWriter("y.txt", true);
+		BufferedWriter br5= new BufferedWriter(fr5);
+
+		FileWriter fr6 = new FileWriter("z.txt", true);
+		BufferedWriter br6= new BufferedWriter(fr6);
+
 		FileReader file = new FileReader("x.txt");
 		BufferedReader reader = new BufferedReader(file);
 
@@ -322,6 +333,7 @@ public class library_management
 									String line;
 									while((line = reader.readLine()) != null)
 									{
+//										System.out.println(line);
 
 										tree.insert(line);
 										hashmapping.put(line, i);
@@ -336,6 +348,7 @@ public class library_management
 									String number;
 									while((number = reader2.readLine()) != null)	
 									{
+//										System.out.println(number);
 										int result = Integer.parseInt(number);
 										if(j!=o)
 									     arr[o][0] = result;
@@ -346,6 +359,7 @@ public class library_management
 									String number1;
 									while((number1 = reader3.readLine()) != null)	
 									{
+//										System.out.println(number1);
 										int result1 = Integer.parseInt(number1);
 										if(j!=pq)
 									     arr[pq][1] = result1;
@@ -362,15 +376,15 @@ public class library_management
 									}
 									else
 									{
+										br4.write(name + "\n");
 										System.out.println("\nEnter quantity of book:");
 										int quantity = input.nextInt();
-										br1.write(name);
-										br2.write(quantity);
-										br3.write(quantity);
 
+										br5.write(String.valueOf(quantity)+ "\n");
+										br6.write(String.valueOf(quantity)+ "\n");
 										tree.insert(name);
 										hashmapping.put(name, i);
-										//int i = hashmapping.get(name);
+
 										arr[i][0]+=quantity;//Total quantity of books
 										arr[i][1]+=quantity;//Available quantity of books
 								        i++;
@@ -441,7 +455,7 @@ public class library_management
 							break;
 							
 							case 6://To print binary search tree
-								//tree.printTree();
+								tree.printTree();
 							break;
 
 							case 7:
@@ -631,6 +645,7 @@ public class library_management
 			break;
 			
 			case 3:
+//				System.out.println(hashmapping);
 				e1=true;
 				
 			break;
@@ -649,6 +664,12 @@ public class library_management
 		fr2.close();
 		br3.close();
 		fr3.close();
+		br4.close();
+		fr4.close();
+		br5.close();
+		fr5.close();
+		br6.close();
+		fr6.close();
 		reader.close();
 		reader2.close();
 		reader3.close();
