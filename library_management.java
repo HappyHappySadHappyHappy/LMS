@@ -205,37 +205,23 @@ public class library_management
         return minv; 
     } 
 	//Print Books Inorder
-	void printInorder(Node node) 
-	{ 
-		if (node == null) 
-			return; 
-
-		printInorder(node.left); 
-
-		System.out.print(node.key + "		"); 
-
-		printInorder(node.right); 
-	} 
-
-	void printInorder()    
+	void printInorder(Node node)
 	{
-		printInorder(root);  
-	} 
+		if (node == null)
+			return;
 
-	void inorder()
-	{ 
-		inorderRec(root); 
-	} 
-   
-	void inorderRec(Node root) 
-	{ 
-		if (root != null) 
-		{ 
-			inorderRec(root.left); 
-			System.out.println(root.key); 
-			inorderRec(root.right); 
-		} 
+		printInorder(node.left);
+
+		System.out.print(node.key + "		");
+
+		printInorder(node.right);
 	}
+
+	void printInorder()
+	{
+		printInorder(root);
+	}
+
 
 	public static void main(String[] args) throws Exception
 	{ 
@@ -249,7 +235,7 @@ public class library_management
 		//Add student Details
 		array[0]=new Student("Atharva",12211608,"B.Tech-VIT");
 		array[1]=new Student("Yuvraj",12211356,"B.Tech-VIT");
-		array[2]=new Student("harshit",12211408,"B.Tech-VIT");
+		array[2]=new Student("Harshit",12211408,"B.Tech-VIT");
 		int [][] arr=new int[100][2];
 		
 		//Create file to store data of students.
@@ -332,18 +318,20 @@ public class library_management
 						switch(ch2)
 						{
 							case 1: 	//To add a book
-									
-									String line;	
-									while((line = reader.readLine()) != null)			
-									{				
-																		
+
+									String line;
+									while((line = reader.readLine()) != null)
+									{
+
 										tree.insert(line);
 										hashmapping.put(line, i);
-										
-								        i++;					
-									}	
+
+								        i++;
+									}
+
+
 									int j=i;
-									
+
 									int o = 0;
 									String number;
 									while((number = reader2.readLine()) != null)	
@@ -370,7 +358,7 @@ public class library_management
 									
 									if(z1==true)
 									{
-										System.out.println("\nIt is already exists:");
+										System.out.println("\nIt already exists:");
 									}
 									else
 									{
@@ -382,11 +370,14 @@ public class library_management
 										
 										tree.insert(name);
 										hashmapping.put(name, i);
-										hashmapping.get(name);
+										//int i = hashmapping.get(name);
 										arr[i][0]+=quantity;//Total quantity of books
 										arr[i][1]+=quantity;//Available quantity of books
 								        i++;
+
+										System.out.println("\nbook is successfully added");
 									}
+
 							break;
 							
 							case 2:			//To delete a book
@@ -399,8 +390,13 @@ public class library_management
 									{
 										tree.deleteKey(b1);
 										hashmapping.remove(b1);
+//										br1.append(b1);
+//										br1.flush();
 										System.out.println();
 										System.out.println("successfully deleted!!");
+									}
+									else {
+										System.out.println("book not found!");
 									}
 									
 							break;
@@ -592,7 +588,8 @@ public class library_management
 								{
 					                System.out.println("Book is overdue.");
 					                long diff=Rday2.getTime()-Rday1.getTime();
-					                int noofdays=(int)(diff/(2000/*24*60*60*/));
+									System.out.println(diff);
+					                double noofdays=(diff/(24*60*60)*1000);
 					                System.out.println("Due Date Time: " + formatter.format(Rday2));
 					                System.out.println("book is delayed by " + noofdays + "seconds."  /* + diff */);
 					                double charge =noofdays*5;
