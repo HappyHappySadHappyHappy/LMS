@@ -138,28 +138,28 @@ public class library_management
 	
 	//print tree in 2D
 
-	void printTree() 
-    { 
-        root = printTreeRec(root, 0); 
-    } 
-	
-	Node printTreeRec(Node t , int space)
-    {       
-        if(t == null)
-            return root;
-       
-        space += 5;
-        
-        printTreeRec(t.right ,space);
-       
-        System.out.println();
-       
-        for(int i = 5 ; i < space ; i++)
-            System.out.print( " ");
-        System.out.print("[" +t.key+ "]");
-        
-        return printTreeRec(t.left ,space);
-    }
+//	void printTree()
+//    {
+//        root = printTreeRec(root, 0);
+//    }
+//
+//	Node printTreeRec(Node t , int space)
+//    {
+//        if(t == null)
+//            return root;
+//
+//        space += 5;
+//
+//        printTreeRec(t.right ,space);
+//
+//        System.out.println();
+//
+//        for(int i = 5 ; i < space ; i++)
+//            System.out.print( " ");
+//        System.out.print("[" +t.key+ "]");
+//
+//        return printTreeRec(t.left ,space);
+//    }
 
 
 	
@@ -176,7 +176,7 @@ public class library_management
         if (key.compareTo(root.key)<0) 
             root.left = deleteRec(root.left, key); 
       //If book name > root then search it at right side and delete
-        else if (key.compareTo(root.key)<0) 
+        else if (key.compareTo(root.key)>0)
             root.right = deleteRec(root.right, key); 
   
         else
@@ -399,6 +399,8 @@ public class library_management
 									{
 										tree.deleteKey(b1);
 										hashmapping.remove(b1);
+										System.out.println();
+										System.out.println("successfully deleted!!");
 									}
 									
 							break;
@@ -443,7 +445,7 @@ public class library_management
 							break;
 							
 							case 6://To print binary search tree
-								tree.printTree();
+								//tree.printTree();
 							break;
 
 							case 7:
@@ -468,7 +470,10 @@ public class library_management
 							case 8:
 								e2=true;
 								break;
-								
+
+							default:
+								System.out.println("invalid choice!");
+								break;
 						}
 					}
 				}		
@@ -618,6 +623,10 @@ public class library_management
 						e3=true;
 	
 					break;
+
+					default:
+						System.out.println("invalid choice!");
+						break;
 				}
 				}
 			break;
@@ -626,6 +635,10 @@ public class library_management
 				e1=true;
 				
 			break;
+
+			default:
+				System.out.println("invalid choice!");
+				break;
 			}
 			
 		}
