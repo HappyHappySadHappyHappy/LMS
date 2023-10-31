@@ -237,30 +237,30 @@ public class library_management
 		array[1]=new Student("Yuvraj",12211356,"B.Tech-VIT");
 		array[2]=new Student("Harshit",12211408,"B.Tech-VIT");
 		int [][] arr=new int[100][2];
-		
+
 		//Create file to store data of students.
 		FileWriter fr = new FileWriter("append.txt", true);
 		BufferedWriter br = new BufferedWriter(fr);
-		
+
 		FileWriter fr1 = new FileWriter("append.txt", true);
 		BufferedWriter br1 = new BufferedWriter(fr1);
-		
+
 		FileWriter fr2 = new FileWriter("append.txt", true);
 		BufferedWriter br2 = new BufferedWriter(fr2);
-		
+
 		FileWriter fr3 = new FileWriter("append.txt", true);
 		BufferedWriter br3 = new BufferedWriter(fr3);
-		
-		FileReader file = new FileReader("x.txt");			
-		BufferedReader reader = new BufferedReader(file);	
-		
-		FileReader file2= new FileReader("y.txt");			
-		BufferedReader reader2 = new BufferedReader(file2);	
-		
-		FileReader file3= new FileReader("z.txt");			
-		BufferedReader reader3 = new BufferedReader(file3);	
-		
-		
+
+		FileReader file = new FileReader("x.txt");
+		BufferedReader reader = new BufferedReader(file);
+
+		FileReader file2= new FileReader("y.txt");
+		BufferedReader reader2 = new BufferedReader(file2);
+
+		FileReader file3= new FileReader("z.txt");
+		BufferedReader reader3 = new BufferedReader(file3);
+
+
 		Date Rday1 = null,Rday2 = null,Cday=null;
 		boolean e1=false;
 		
@@ -367,7 +367,7 @@ public class library_management
 										br1.write(name);
 										br2.write(quantity);
 										br3.write(quantity);
-										
+
 										tree.insert(name);
 										hashmapping.put(name, i);
 										//int i = hashmapping.get(name);
@@ -527,7 +527,7 @@ public class library_management
 									arr[a][1]--;	 								 
 									Cday=cal.getTime();
 									System.out.println("Currunt Date Time : " + formatter.format(cal.getTime()));
-									cal.add(Calendar.SECOND, 30);
+									cal.add(Calendar.SECOND, 10);
 									Rday1 = cal.getTime();
 									System.out.println("Due Date Time: " + formatter.format(Rday1));
 									array[index].book_no++;
@@ -586,10 +586,12 @@ public class library_management
 								
 								if(Rday2.after(Rday1))
 								{
+
 					                System.out.println("Book is overdue.");
 					                long diff=Rday2.getTime()-Rday1.getTime();
+
 									System.out.println(diff);
-					                double noofdays=(diff/(24*60*60)*1000);
+					                double noofdays=(diff/(24*60*60*1000));
 					                System.out.println("Due Date Time: " + formatter.format(Rday2));
 					                System.out.println("book is delayed by " + noofdays + "seconds."  /* + diff */);
 					                double charge =noofdays*5;
@@ -650,6 +652,6 @@ public class library_management
 		reader.close();
 		reader2.close();
 		reader3.close();
-		
+
 	}
 }
